@@ -2,7 +2,7 @@
 name = "{{project}}"
 description = "{{}}"
 license = "{{license}}"
-license_file = "LICENSE"
+license-file = "LICENSE"
 version = "{{version}}"
 edition = "2018"
 
