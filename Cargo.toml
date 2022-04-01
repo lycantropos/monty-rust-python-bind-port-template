@@ -1,6 +1,6 @@
 [package]
 name = "{{project}}"
-description = "{{}}"
+description = "{{description}}"
 license = "{{license}}"
 license-file = "LICENSE"
 version = "{{version}}"
