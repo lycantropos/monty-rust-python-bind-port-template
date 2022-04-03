@@ -224,7 +224,7 @@ jobs:
           default: true
           target: ${{ '{{ matrix.platform.rust_target }}' }}
           toolchain: nightly
-        if: ${{ runner.os != 'Linux' }}
+        if: ${{ '{{ runner.os != \'Linux\' }}' }}
       - name: 'Build wheels'
         uses: pypa/cibuildwheel@v2.3.1
         env:
