@@ -268,9 +268,9 @@ jobs:
             rust_target: 'i686-pc-windows-msvc'
           },
         ]
-{% if min_python_version.split('.')[1]|int <= 7 %}
+{% if min_python_version.split('.')[1]|int <= 7 and max_python_version.split('.')[1]|int > 7 %}
         include:
-{% for minor in range(min_python_version.split('.')[1]|int, (max_python_version.split('.')[1])|int + 1) %}          - build_prefix: 'cp3{{ minor }}'
+{% for minor in range(8, max_python_version.split('.')[1]|int + 1) %}          - build_prefix: 'cp3{{ minor }}'
             build: {
               architecture: 'arm64',
               postfix: 'macosx_arm64',
