@@ -203,14 +203,8 @@ jobs:
             os: 'macos-latest',
             python_architecture: 'x64',
             rust_target: 'aarch64-apple-darwin'
-          },{% endif %}          {
-            architecture: 'x86_64',
-            postfix: 'macosx_x86_64',
-            os: 'macos-latest',
-            python_architecture: 'x64',
-            rust_target: 'x86_64-apple-darwin'
           },
-          {
+{% endif %}          {
             architecture: 'aarch64',
             postfix: 'manylinux_aarch64',
             os: 'ubuntu-latest',
