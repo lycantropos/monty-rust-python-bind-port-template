@@ -183,13 +183,6 @@ jobs:
       matrix:
         build_prefix: ['cp3{{ range(min_python_version.split('.')[1]|int, (max_python_version.split('.')[1])|int + 1) | join('\', \'cp3') }}']
         build: [
-          {
-            architecture: 'x86_64',
-            postfix: 'macosx_x86_64',
-            os: 'macos-latest',
-            python_architecture: 'x64',
-            rust_target: 'x86_64-apple-darwin'
-          },
 {% if min_python_version.split('.')[1]|int > 7 %}          {
             architecture: 'arm64',
             postfix: 'macosx_arm64',
@@ -205,6 +198,13 @@ jobs:
             rust_target: 'aarch64-apple-darwin'
           },
 {% endif %}          {
+            architecture: 'x86_64',
+            postfix: 'macosx_x86_64',
+            os: 'macos-latest',
+            python_architecture: 'x64',
+            rust_target: 'x86_64-apple-darwin'
+          },
+          {
             architecture: 'aarch64',
             postfix: 'manylinux_aarch64',
             os: 'ubuntu-latest',
