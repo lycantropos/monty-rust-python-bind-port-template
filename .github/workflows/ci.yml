@@ -270,7 +270,7 @@ jobs:
         ]
 {% if min_python_version.split('.')[1]|int <= 7 %}
         include:
-{% for minor in range(min_python_version.split('.')[1]|int, (max_python_version.split('.')[1])|int + 1) %}          - build_prefix: 'cp3${{ minor }}'
+{% for minor in range(min_python_version.split('.')[1]|int, (max_python_version.split('.')[1])|int + 1) %}          - build_prefix: 'cp3{{ minor }}'
             build: {
               architecture: 'arm64',
               postfix: 'macosx_arm64',
@@ -278,7 +278,7 @@ jobs:
               python_architecture: 'x64',
               rust_target: 'aarch64-apple-darwin'
             }
-          - build_prefix: 'cp3${{ minor }}'
+          - build_prefix: 'cp3{{ minor }}'
             build: {
               architecture: 'universal2',
               postfix: 'macosx_universal2',
