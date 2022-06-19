@@ -181,7 +181,7 @@ jobs:
     needs: pre-deploy
     strategy:
       matrix:
-        platform_tag: ['cp3{{ range(min_python_version.split('.')[1]|int, (max_python_version.split('.')[1])|int + 1) | join('\', \'cp3') }}']
+        python_tag: ['cp3{{ range(min_python_version.split('.')[1]|int, (max_python_version.split('.')[1])|int + 1) | join('\', \'cp3') }}']
         platform: [
 {% if min_python_version.split('.')[1]|int > 7 %}          {
             architecture: 'arm64',
@@ -270,7 +270,7 @@ jobs:
         ]
 {% if min_python_version.split('.')[1]|int <= 7 and max_python_version.split('.')[1]|int > 7 %}
         include:
-{% for minor in range(8, max_python_version.split('.')[1]|int + 1) %}          - platform_tag: 'cp3{{ minor }}'
+{% for minor in range(8, max_python_version.split('.')[1]|int + 1) %}          - python_tag: 'cp3{{ minor }}'
             platform: {
               architecture: 'arm64',
               os: 'macos-latest',
@@ -278,7 +278,7 @@ jobs:
               rust_target: 'aarch64-apple-darwin',
               tag: 'macosx_arm64'
             }
-          - platform_tag: 'cp3{{ minor }}'
+          - python_tag: 'cp3{{ minor }}'
             platform: {
               architecture: 'universal2',
               os: 'macos-latest',
@@ -320,7 +320,7 @@ jobs:
             [net]
             git-fetch-with-cli = true
             EOF
-          CIBW_BUILD: ${{ '{{ matrix.platform_tag }}' }}-${{ '{{ matrix.platform.tag }}' }}
+          CIBW_BUILD: ${{ '{{ matrix.python_tag }}' }}-${{ '{{ matrix.platform.tag }}' }}
           CIBW_BUILD_VERBOSITY: 1
           CIBW_ENVIRONMENT_LINUX: PATH="$HOME/.cargo/bin:$PATH"
       - name: 'Upload wheels'
