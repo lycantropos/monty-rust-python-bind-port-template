@@ -64,6 +64,7 @@ jobs:
         with:
           components: rustfmt
           default: true
+          profile: minimal
           target: ${{ '{{ matrix.platform.rust_target }}' }}
           toolchain: nightly
         if: ${{ '{{ !startsWith(matrix.python_version, \'pypy\') }}' }}
@@ -72,7 +73,7 @@ jobs:
         if: ${{ '{{ !startsWith(matrix.python_version, \'pypy\') }}' }}
       - name: 'Setup cross-compiling dependencies'
         run: sudo apt-get install gcc-multilib
-        if: ${{ '{{' }}runner.os == 'Linux' &&
+        if: ${{ '{{' }} runner.os == 'Linux' &&
                 startsWith(matrix.platform.rust_target, 'i686') {{ '}}' }}
       - name: 'Run Rust doctests'
         run: cargo test --doc --target=${{ '{{ matrix.platform.rust_target }}' }}
