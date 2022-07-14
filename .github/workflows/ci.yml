@@ -157,6 +157,7 @@ jobs:
         uses: actions-rs/toolchain@v1
         with:
           default: true
+          profile: minimal
           toolchain: nightly
       - name: 'Upload'
         run: cargo publish --no-verify
@@ -309,6 +310,7 @@ jobs:
         uses: actions-rs/toolchain@v1
         with:
           default: true
+          profile: minimal
           target: ${{ '{{ matrix.platform.rust_target }}' }}
           toolchain: nightly
         if: ${{ '{{ runner.os != \'Linux\' }}' }}
