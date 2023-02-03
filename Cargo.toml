@@ -10,8 +10,8 @@ name = "{{project}}"
 crate-type = ["cdylib", "rlib"]
 
 [dependencies.pyo3]
-version = "^0.16"
+version = "^0.18"
 features = ["extension-module"]
 
 [build-dependencies]
-pyo3-build-config = "^0.16"
+pyo3-build-config = "^0.18"
