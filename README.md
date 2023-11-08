@@ -86,7 +86,7 @@ This will set version to `major.minor.patch`.
 
 Install dependencies
 ```bash
-python -m pip install -r requirements-tests.txt
+python -m pip install -e .[tests]
 ```
 
 Plain

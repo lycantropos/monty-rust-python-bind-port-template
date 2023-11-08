@@ -10,13 +10,9 @@ ENV PATH="/root/.cargo/bin:${PATH}"
 
 WORKDIR /opt/{{project}}
 
-COPY requirements-tests.txt .
-RUN pip install -r requirements-tests.txt
-
 COPY rust-toolchain.toml .
-COPY requirements-setup.txt .
 COPY README.md .
-COPY pytest.ini .
+COPY pyproject.toml .
 COPY Cargo.toml .
 COPY setup.py .
 COPY {{project}} {{project}}

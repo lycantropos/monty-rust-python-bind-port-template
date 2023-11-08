@@ -1,0 +1,45 @@
+[project]
+name = "{{project}}"
+description = "{{description}}"
+authors = [{ name = "{{full_name}}", email = "{{email}}" }]
+readme = "README.md"
+license = { file = "LICENSE" }
+classifiers = [
+    "{{trove_license_classifier}}",
+{% for minor in range(min_version_of['python'].split(".")[1]|int, (max_version_of['python'].split(".")[1])|int + 1) %}
+    "Programming Language :: Python :: 3.{{minor}}",
+{% endfor %}
+    "Programming Language :: Python :: Implementation :: CPython",
+    "Programming Language :: Python :: Implementation :: PyPy",
+    "Programming Language :: Python :: Implementation :: CPython",
+    "Programming Language :: Python :: Implementation :: PyPy"
+]
+requires-python = ">={{min_version_of['python']}}"
+dependencies = []
+dynamic = ["version"]
+
+[project.optional-dependencies]
+tests = [
+    "hypothesis>=6.75.2,<7.0",
+    "pytest>=7.3.1,<8.0"
+]
+
+[build-system]
+requires = [
+    "setuptools-rust>=1.5.2,<2.0; platform_python_implementation=='CPython'",
+    "setuptools",
+    "wheel"
+]
+build-backend = "setuptools.build_meta"
+
+[tool.coverage.run]
+source = ["{{project}}"]
+
+[tool.mypy]
+strict = true
+
+[tool.pytest.ini_options]
+addopts = "--verbose -s --hypothesis-profile=default"
+
+[tool.setuptools.dynamic]
+version = { attr = "{{project}}.__version__" }
